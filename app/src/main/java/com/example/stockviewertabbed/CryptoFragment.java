@@ -14,17 +14,21 @@ package com.example.stockviewertabbed;
         import androidx.annotation.NonNull;
         import androidx.annotation.Nullable;
         import androidx.fragment.app.Fragment;
+        import androidx.recyclerview.widget.RecyclerView;
 
         import com.google.gson.annotations.SerializedName;
 
 
 public class CryptoFragment extends Fragment {
-
+    RecyclerView crypto_recycleview;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.cryptofragment_layout,container,false);
-
+        crypto_recycleview =view.findViewById(R.id.crypto_recycleview);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+//
+//        crypto_recycleview.setLayoutManager(layoutManager);
         return view;
 }
 }
