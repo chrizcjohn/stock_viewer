@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">stockviewertabbed</string>
+    <string name="tab_text_1">Stock</string>
+    <string name="tab_text_2">Crypto</string>
+    <string name="tab_text_3">News</string>
+
+</resources>
