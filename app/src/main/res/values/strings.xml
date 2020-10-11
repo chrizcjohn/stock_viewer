@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">stockviewertabbed</string>
+    <string name="app_name">Stock and Crypto Viewer</string>
     <string name="tab_text_1">Stock</string>
     <string name="tab_text_2">Crypto</string>
     <string name="tab_text_3">News</string>
+    <string name="get_the_live_crypto_prices_in_your_favourite_fiat_currency_in_inr">Live crypto prices in your favourite fiat currency in INR.</string>
 
 </resources>

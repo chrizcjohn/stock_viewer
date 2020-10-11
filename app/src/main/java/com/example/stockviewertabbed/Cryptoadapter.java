@@ -15,6 +15,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class Cryptoadapter extends RecyclerView.Adapter<Cryptoadapter.ViewHolder> {
+
+
     private ArrayList<Bitcoin> bitcoins = new ArrayList<>();
     private Context context;
 
@@ -30,11 +32,13 @@ public class Cryptoadapter extends RecyclerView.Adapter<Cryptoadapter.ViewHolder
         return new Cryptoadapter.ViewHolder(view);
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull Cryptoadapter.ViewHolder viewholder, int position) {
-        viewholder.crypto_name.setText(bitcoins.get(position).getName());
-      viewholder.crypto_price.setText(bitcoins.get(position).getCurrentPrice());
 
+        viewholder.crypto_name.setText(bitcoins.get(position).getName());
+        viewholder.crypto_price.setText(bitcoins.get(position).getCurrentPrice().toString());
         Picasso.get().load(bitcoins.get(position).getImage()).into(viewholder.crypto_image);
 
     }
