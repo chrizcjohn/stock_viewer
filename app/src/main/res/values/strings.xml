@@ -4,5 +4,6 @@
     <string name="tab_text_2">Crypto</string>
     <string name="tab_text_3">News</string>
     <string name="get_the_live_crypto_prices_in_your_favourite_fiat_currency_in_inr">Live crypto prices in your favourite fiat currency in INR.</string>
+    <string name="news_title">Find here latest business news and financial news, share market news, live stock news, economy news.</string>
 
 </resources>

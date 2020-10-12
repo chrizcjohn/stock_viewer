@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,10 +23,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NewsFragment extends Fragment {
-    ArrayList<News> news = new ArrayList<>();
-
+    ArrayList<Article> articles = new ArrayList<>();
     ArrayList<String> arrayList = new ArrayList<>();
-    
+
     NewsAdapter newsAdapter;
     RecyclerView newsRecyclerview;
     RecyclerView.LayoutManager layoutManager;
@@ -36,7 +34,7 @@ public class NewsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.newsfragment_layout,container,false);
-
+        getNewsResponce();
         return view;
     }
 
@@ -47,20 +45,19 @@ public class NewsFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         NewsAPI newsAPI = retrofit.create(NewsAPI.class);
-        Call<List<News>> call = newsAPI.getNews();
-
-        call.enqueue(new Callback<List<News>>() {
+        Call<News> call = newsAPI.getNews();
+        call.enqueue(new Callback<News>() {
             @Override
-            public void onResponse(Call<List<News>> call, Response<List<News>> response) {
-                news = new ArrayList<>(response.body());
-                newsAdapter =new NewsAdapter(context,news);
+            public void onResponse(Call<News> call, Response<News> response) {
+                articles = new ArrayList<>(response.body().getArticles());
+                newsAdapter =new NewsAdapter(context,articles);
                 newsRecyclerview.setAdapter(newsAdapter);
                 newsRecyclerview.getAdapter().notifyDataSetChanged();
                 Toast.makeText(getActivity(), "Success news", Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onFailure(Call<List<News>> call, Throwable t) {
+            public void onFailure(Call<News> call, Throwable t) {
                 Log.d("Error:", t.getMessage());
                 Toast.makeText(getActivity(), "Error news", Toast.LENGTH_LONG).show();
             }
@@ -70,7 +67,6 @@ public class NewsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getNewsResponce();
         newsRecyclerview=view.findViewById(R.id.news_recycleview);
         layoutManager = new LinearLayoutManager(getContext());
         newsRecyclerview.setLayoutManager(layoutManager);
